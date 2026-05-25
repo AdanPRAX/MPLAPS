@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MAP LAPS</title>
+
+<style>
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Arial, sans-serif; /* Fuente un poco más moderna */
+}
+
+body{
+    background: linear-gradient(135deg, #07182e, #0d2f5c);
+    color: white;
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+
+body::before{
+    content: "";
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background:
+    radial-gradient(circle at 20% 20%, rgba(79,195,255,0.15), transparent 30%),
+    radial-gradient(circle at 80% 50%, rgba(79,195,255,0.15), transparent 30%);
+    z-index: -1;
+}
+
+header{
+    text-align: center;
+    padding: 50px 20px 30px;
+}
+
+header h1{
+    font-size: 3rem;
+    color: #4fc3ff;
+    text-shadow: 0 0 20px rgba(79,195,255,0.5);
+    letter-spacing: 2px;
+}
+
+header p{
+    color: #d1e8ff;
+    margin-top: 10px;
+    font-size: 1.2rem;
+    text-transform: uppercase;
+    font-size: 0.9rem;
+    letter-spacing: 4px;
+    opacity: 0.8;
+}
+
+.container{
+    width: 90%;
+    max-width: 1200px;
+    margin: auto;
+    padding-bottom: 60px;
+}
+
+.card-main{
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 25px;
+    padding: 40px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center; /* Alineación vertical perfecta */
+    gap: 40px;
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+    transition: 0.4s ease;
+}
+
+.card-main:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 25px 50px rgba(79,195,255,0.15);
+}
+
+.medicine-image{
+    flex: 1;
+    min-width: 300px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.medicine-image img{
+    width: 100%;
+    max-width: 380px;
+    border-radius: 20px;
+    border: 1px solid rgba(255,255,255,0.2);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+    transition: 0.5s ease;
+}
+
+.medicine-image img:hover{
+    transform: scale(1.03) rotateZ(1deg);
+    box-shadow: 0 15px 35px rgba(79,195,255,0.3);
+}
+
+.info{
+    flex: 1.2;
+    min-width: 300px;
+}
+
+.info h2{
+    font-size: 2.2rem;
+    color: #7fd9ff;
+    margin-bottom: 20px;
+    position: relative;
+}
+
+.info p{
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: #dcefff;
+}
+
+.grid{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3 columnas fijas en escritorio */
+    gap: 25px;
+    margin-top: 40px;
+}
+
+.card{
+    background: rgba(255,255,255,0.04);
+    border-radius: 20px;
+    padding: 25px;
+    transition: 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    border: 1px solid rgba(255,255,255,0.06);
+    display: flex;
+    flex-direction: column;
+}
+
+.card:hover{
+    background: rgba(255,255,255,0.07);
+    transform: translateY(-8px);
+    border-color: rgba(79,195,255,0.3);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3), 0 0 15px rgba(79,195,255,0.1);
+}
+
+.card h3{
+    color: #63cfff;
+    font-size: 1.2rem;
+    margin-bottom: 15px;
+    border-bottom: 1px solid rgba(29, 161, 242, 0.2);
+    padding-bottom: 8px;
+}
+
+.card p, .card ul, .card ol{
+    color: #dcefff;
+    line-height: 1.6;
+    font-size: 0.95rem;
+}
+
+
+.card ul, .card ol{
+    padding-left: 18px;
+}
+
+.card li{
+    margin-bottom: 8px;
+}
+
+.card li::marker {
+    color: #63cfff; 
+}
+
+footer{
+    text-align: center;
+    padding: 30px;
+    margin-top: 40px;
+    background: rgba(4, 12, 24, 0.7);
+    color: #b5d9ff;
+    font-size: 0.9rem;
+    border-top: 1px solid rgba(255,255,255,0.05);
+}
+
+/* Responsividad perfecta */
+@media(max-width: 992px){
+    .grid{
+        grid-template-columns: repeat(2, 1fr); 
+    }
+}
+
+@media(max-width: 768px){
+    header h1{
+        font-size: 2.3rem;
+    }
+
+    .card-main{
+        padding: 25px;
+        gap: 25px;
+    }
+    
+    .grid{
+        grid-template-columns: 1fr; 
+    }
+    
+    .medicine-image img {
+        max-width: 100%;
+    }
+}
+</style>
+
+</head>
+<body>
+
+<header>
+    <h1>MAP LAPS</h1>
+    <p>Medicamento nanotecnológico</p>
+</header>
+
+<div class="container">
+
+    <div class="card-main">
+        <div class="medicine-image">
+            <img src="hola.jpeg" alt="Medicamento">
+        </div>
+
+        <div class="info">
+            <h2>Descripción General</h2>
+            <p>Medicamento nanotecnológico en polvo, uso oral.</p>
+        </div>
+    </div>
+
+    <div class="grid">
+
+        <div class="card">
+            <h3>Fórmula</h3>
+            <ul>
+                <li>Doxorrubicina: 50 g</li>
+                <li>Imatinib: 30 g</li>
+                <li>Paclitaxel: 20 g</li>
+            </ul>
+        </div>
+
+        <div class="card">
+            <h3>Marca / Laboratorio</h3>
+            <p>MAP LAPS</p>
+        </div>
+
+        <div class="card">
+            <h3>Dirección</h3>
+            <p>
+                Av. 100 Metros s/n (esquina con Av. Fortuna)<br>
+                Col. Magdalena de las Salinas<br>
+                Alcaldía Gustavo A. Madero<br>
+                C.P. 07760, Ciudad de México, México
+            </p>
+        </div>
+
+        <div class="card">
+            <h3>Modo de Empleo</h3>
+            <ol>
+                <li>Verter contenido en boca o agua.</li>
+                <li>Se transforma en nieve brillante.</li>
+                <li>Libera millones de nanopartículas medicinales.</li>
+                <li>Actúan solo en células específicas.</li>
+            </ol>
+        </div>
+
+        <div class="card">
+            <h3>Características Principales</h3>
+            <ul>
+                <li>Nieve artificial nanotecnológica.</li>
+                <li>Combate el cáncer con precisión molecular.</li>
+                <li>Acción dirigida a células cancerígenas.</li>
+                <li>Menos efectos secundarios.</li>
+                <li>Liberación de moléculas terapéuticas.</li>
+            </ul>
+        </div>
+
+        <div class="card">
+            <h3>Recomendaciones</h3>
+            <p>Almacenar en lugar seco, fresco y protegido de la luz.</p>
+        </div>
+
+        <div class="card">
+            <h3>Presentación</h3>
+            <p>10 sobres, dosis individual.</p>
+        </div>
+
+    </div>
+
+</div>
+
+<footer>
+    MAP LAPS | Tecnología nanotecnológica médica
+</footer>
+
+</body>
+</html>
